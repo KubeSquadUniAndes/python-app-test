@@ -1,0 +1,30 @@
+{
+    "taskDefinition": "task-python-app:1",
+    "cluster": "cluster-devops",
+    "loadBalancers": [
+        {
+            "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:780522923809:targetgroup/first-target-group/0a3f60a6f53a8e97",
+            "containerName": "python-app",
+            "containerPort": 5000
+        }
+    ],
+    "desiredCount": 1,
+    "launchType": "FARGATE",
+    "schedulingStrategy": "REPLICA",
+    "deploymentController": {
+        "type": "CODE_DEPLOY"
+    },
+    "networkConfiguration": {
+        "awsvpcConfiguration": {
+            "subnets": [
+                "subnet-00b06a7003674ce11",
+                "subnet-042154f86a914c0cb"
+            ],
+            "securityGroups": [
+                "sg-0093e0dbfccb30314",
+                "sg-064b5b9a0cac20abb"
+            ],
+            "assignPublicIp": "ENABLED"
+        }
+    }
+}
