@@ -1,9 +1,11 @@
-FROM alpine:latest
+FROM alpine:3.14
 
-# Install Python and pip without caching, then upgrade pip.
-RUN apt-get update && apt-get install -y \
-    python3 python3-pip && rm -rf /var/lib/apt/lists/* \
-    && pip install --upgrade pip
+# Install Python and pip using Alpine package manager
+RUN apk update && apk add --no-cache \
+    python3 \
+    py3-pip \
+    && python3 -m pip install --upgrade pip \
+    && rm -rf /var/cache/apk/*
 
 WORKDIR /app
 
