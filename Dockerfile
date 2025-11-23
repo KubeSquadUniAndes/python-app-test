@@ -13,6 +13,6 @@ RUN pip install --no-cache-dir -r /app/src/requirements.txt
 # Copy the rest of the application source.
 COPY . /app/
 
-EXPOSE 5000
+EXPOSE 8000
 
 CMD ["python3", "src/application.py"]

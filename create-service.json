@@ -1,11 +1,11 @@
 {
-    "taskDefinition": "task-python-app:1",
-    "cluster": "cluster-devops",
+    "taskDefinition": "blacklit-app:1",
+    "cluster": "cluster-blacklist",
     "loadBalancers": [
         {
-            "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:780522923809:targetgroup/first-target-group/0a3f60a6f53a8e97",
-            "containerName": "python-app",
-            "containerPort": 5000
+            "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:780522923809:targetgroup/target-group-one/61e1834722999781",
+            "containerName": "python_app",
+            "containerPort": 8000
         }
     ],
     "desiredCount": 1,
@@ -17,11 +17,11 @@
     "networkConfiguration": {
         "awsvpcConfiguration": {
             "subnets": [
-                "subnet-00b06a7003674ce11",
-                "subnet-042154f86a914c0cb"
+                "subnet-0d5ef5d7c216aadb6",
+                "subnet-076f88f2978ad03c8"
             ],
             "securityGroups": [
-                "sg-064b5b9a0cac20abb"
+                "sg-05ea8e8c652cde300"
             ],
             "assignPublicIp": "ENABLED"
         }
