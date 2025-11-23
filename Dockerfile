@@ -1,7 +1,8 @@
-FROM public.ecr.aws/docker/library/python:3.11-slim
+FROM alpine:3.latest
 
 # Install Python and pip without caching, then upgrade pip.
-RUN apk add --no-cache python3 py3-pip \
+RUN apt-get update && apt-get install -y \
+    python3 python3-pip && rm -rf /var/lib/apt/lists/* \
     && pip install --upgrade pip
 
 WORKDIR /app
