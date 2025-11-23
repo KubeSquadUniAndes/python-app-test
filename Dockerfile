@@ -1,4 +1,4 @@
-FROM alpine:3.latest
+FROM alpine:latest
 
 # Install Python and pip without caching, then upgrade pip.
 RUN apt-get update && apt-get install -y \
