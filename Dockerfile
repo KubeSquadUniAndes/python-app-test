@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/alpine:3.14
+FROM alpine:3.14
 
 # Install Python and pip without caching, then upgrade pip.
 RUN apk add --no-cache python3 py3-pip \
