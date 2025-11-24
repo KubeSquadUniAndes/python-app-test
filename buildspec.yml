@@ -9,27 +9,20 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...          
-      - docker build -t pythonapp:latest .
-      - docker tag pythonapp:latest 780522923809.dkr.ecr.us-east-1.amazonaws.com/pythonapp:latest
+      - docker build -t pythonapp:2.0 .
+      - docker tag pythonapp:2.0 780522923809.dkr.ecr.us-east-1.amazonaws.com/pythonapp:2.0
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push 780522923809.dkr.ecr.us-east-1.amazonaws.com/pythonapp:latest
+      - docker push 780522923809.dkr.ecr.us-east-1.amazonaws.com/pythonapp:2.0
       - echo Writing image detail file for CodeDeploy substitution...
-      - printf '{"ImageURI":"780522923809.dkr.ecr.us-east-1.amazonaws.com/pythonapp:latest"}' > imageDetail.json
+      - printf '{"ImageURI":"780522923809.dkr.ecr.us-east-1.amazonaws.com/pythonapp:2.0"}' > imageDetail.json
       - cat imageDetail.json 
 artifacts:
   files:
     - '**/*'
     - imageDetail.json
     - Dockerfile
-    - Dockerrun.aws.json
-  secondary-artifacts:
-    DefinitionArtifact:
-      files:
-        - appspec.yaml
-        - taskdef.json
-    ImageArtifact:
-      files:
-        - imageDetail.json
+    - appspec.yaml
+    - taskdef.json
