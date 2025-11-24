@@ -22,5 +22,5 @@
     "networkMode": "awsvpc",
     "cpu": "512",
     "memory": "1024",
-    "family": "task-python-app"
+    "family": "blacklit-app"
   }
