@@ -9,16 +9,16 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...          
-      - docker build -t python_app:latest .
-      - docker tag python_app:latest 780522923809.dkr.ecr.us-east-1.amazonaws.com/python_app:latest
+      - docker build -t pythonapp:latest .
+      - docker tag pythonapp:latest 780522923809.dkr.ecr.us-east-1.amazonaws.com/pythonapp:latest
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push 780522923809.dkr.ecr.us-east-1.amazonaws.com/python_app:latest
+      - docker push 780522923809.dkr.ecr.us-east-1.amazonaws.com/pythonapp:latest
       - echo Writing Image Definitions file...
-      - printf '[{"name":"python_app","imageUri":"780522923809.dkr.ecr.us-east-1.amazonaws.com/python_app:latest"}]' > imagedefinitions.json
-      - printf '{"ImageURI":"780522923809.dkr.ecr.us-east-1.amazonaws.com/python_app:latest"}' > imageDetail.json
+      - printf '[{"name":"pythonapp","imageUri":"780522923809.dkr.ecr.us-east-1.amazonaws.com/pythonapp:latest"}]' > imagedefinitions.json
+      - printf '{"ImageURI":"780522923809.dkr.ecr.us-east-1.amazonaws.com/pythonapp:latest"}' > imageDetail.json
       - cat imagedefinitions.json 
 artifacts:
   files:

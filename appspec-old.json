@@ -7,7 +7,7 @@
           "Properties": {
             "TaskDefinition": "<TASK_DEFINITION>",
             "LoadBalancerInfo": {
-              "ContainerName": "python_app",
+              "ContainerName": "pythonapp",
               "ContainerPort": 8000
             }
           }

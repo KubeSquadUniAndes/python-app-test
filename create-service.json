@@ -4,7 +4,7 @@
     "loadBalancers": [
         {
             "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:780522923809:targetgroup/target-group-one/61e1834722999781",
-            "containerName": "python_app",
+            "containerName": "pythonapp",
             "containerPort": 8000
         }
     ],
