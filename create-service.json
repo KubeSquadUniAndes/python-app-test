@@ -1,5 +1,5 @@
 {
-    "taskDefinition": "blacklit-app:1",
+    "taskDefinition": "blacklit-app:2",
     "cluster": "cluster-blacklist",
     "loadBalancers": [
         {
