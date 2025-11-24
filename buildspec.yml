@@ -25,6 +25,8 @@ artifacts:
     - '**/*'
     - imagedefinitions.json
     - imageDetail.json
+    - Dockerfile
+    - Dockerrun.aws.json
   secondary-artifacts:
     DefinitionArtifact:
       files:
