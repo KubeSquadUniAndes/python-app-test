@@ -12,7 +12,7 @@
 
         "image": "<IMAGE1_NAME>",
         "essential": true,
-        "name": "pythonapp"
+        "name": "python_app"
       }
     ],
 
