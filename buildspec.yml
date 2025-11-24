@@ -13,8 +13,8 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...          
-      - docker build -t pythonapp:$VERSION .
-      - docker tag pythonapp:$VERSION 780522923809.dkr.ecr.us-east-1.amazonaws.com/pythonapp:$VERSION
+      - docker build -t pythonapp:${VERSION} .
+      - docker tag pythonapp:${VERSION} 780522923809.dkr.ecr.us-east-1.amazonaws.com/pythonapp:$VERSION
   post_build:
     commands:
       - echo Build completed on `date`
