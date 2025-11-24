@@ -16,14 +16,12 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push 780522923809.dkr.ecr.us-east-1.amazonaws.com/pythonapp:latest
-      - echo Writing Image Definitions file...
-      - printf '[{"name":"pythonapp","imageUri":"780522923809.dkr.ecr.us-east-1.amazonaws.com/pythonapp:latest"}]' > imagedefinitions.json
+      - echo Writing image detail file for CodeDeploy substitution...
       - printf '{"ImageURI":"780522923809.dkr.ecr.us-east-1.amazonaws.com/pythonapp:latest"}' > imageDetail.json
-      - cat imagedefinitions.json 
+      - cat imageDetail.json 
 artifacts:
   files:
     - '**/*'
-    - imagedefinitions.json
     - imageDetail.json
     - Dockerfile
     - Dockerrun.aws.json
