@@ -1,5 +1,9 @@
 version: 0.2
 
+env:
+  variables:
+    VERSION: "3.0"
+
 phases:
   pre_build:
     commands:
@@ -8,25 +12,22 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - echo Determining image tag...
-      - COMMIT_SHA=${CODEBUILD_RESOLVED_SOURCE_VERSION:-manual}
-      - echo Using image tag $COMMIT_SHA
-      - echo Building the Docker image...
-      - docker build -t pythonapp:$COMMIT_SHA .
-      - docker tag pythonapp:$COMMIT_SHA 780522923809.dkr.ecr.us-east-1.amazonaws.com/pythonapp:$COMMIT_SHA
-      - docker tag pythonapp:$COMMIT_SHA 780522923809.dkr.ecr.us-east-1.amazonaws.com/pythonapp:latest
+      - echo Building the Docker image...          
+      - docker build -t pythonapp:$VERSION .
+      - docker tag pythonapp:$VERSION 780522923809.dkr.ecr.us-east-1.amazonaws.com/pythonapp:$VERSION
   post_build:
     commands:
       - echo Build completed on `date`
-      - echo Pushing image tags...
-      - docker push 780522923809.dkr.ecr.us-east-1.amazonaws.com/pythonapp:$COMMIT_SHA
-      - docker push 780522923809.dkr.ecr.us-east-1.amazonaws.com/pythonapp:latest
-      - echo Writing imagedefinitions.json for CodeDeployToECS substitution...
-      - printf '[{"name":"pythonapp","imageUri":"780522923809.dkr.ecr.us-east-1.amazonaws.com/pythonapp:%s"}]' "$COMMIT_SHA" > imagedefinitions.json
-      - cat imagedefinitions.json 
+      - echo Pushing the Docker image...
+      - docker push 780522923809.dkr.ecr.us-east-1.amazonaws.com/pythonapp:$VERSION
+      - echo Writing image detail file for CodeDeploy substitution...
+      - printf '{"ImageURI":"780522923809.dkr.ecr.us-east-1.amazonaws.com/pythonapp:$VERSION"}' > imageDetail.json
+      - cat imageDetail.json 
+      
 artifacts:
   files:
+    - '**/*'
+    - imageDetail.json
+    - Dockerfile
     - appspec.yaml
     - taskdef.json
-    - imagedefinitions.json
-    - Dockerfile
