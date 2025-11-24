@@ -35,3 +35,4 @@ artifacts:
     - Dockerfile
     - appspec.yaml
     - taskdef.json
+    - imagedefinitions.json
